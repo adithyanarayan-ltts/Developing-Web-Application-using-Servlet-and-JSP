@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Registration</title>
+<script>
+function emailValidation() {
+    inputText = document.getElementById('email');
+    var mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    if (inputText.value.match(mailformat)) {
+        document.getElementById('eV').innerHTML="Valid email";
+        document.getElementById('eV').style.color="green";
+        document.getElementById('email').style.background = "green";
+        document.getElementById('eV').style.margin= "10px";
+        return true;
+    }
+    else {
+        document.getElementById('eV').innerHTML = " Invalid email";
+        document.getElementById('eV').style.color="red";
+        document.getElementById('email').style.background = "crimson";     
+        document.getElementById('eV').style.margin= "10px";
+        return false;
+    }
+}
+</script>
+</head>
+<body>
+	<form action="./InsertMemberController" method="post"> 
+		<label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br><br>
+        <label for="pass">Password:</label>
+        <input type="password" id="pass" name="pass"></input><br><br>
+        <label for="email">Email:</label>
+        <input type="text" onfocus="this.value=''" onblur="emailValidation()" id="email" name="email"><br><span id="eV" style="font-size: small;"></span><br><br>
+        <label for="loc">Location:</label>
+        <input type="text" id="loc" name="loc"><br><br>
+        <input type="submit" value="Sign Up">
+    </form>
+</body>
+</html>

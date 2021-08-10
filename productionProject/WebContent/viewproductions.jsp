@@ -13,7 +13,7 @@
 	ProductionDao pd = new ProductionDao();
 	List<Production> li = pd.getAllProductions();
 %>
-<a href="index.html">Home</a>
+<a href="dashboard.html">Home</a>
 <table>
 <tr>
 <th>Id</th>

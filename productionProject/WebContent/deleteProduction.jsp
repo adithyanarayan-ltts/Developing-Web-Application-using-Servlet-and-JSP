@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Delete Production</title>
 </head>
 <body>
 
@@ -15,7 +15,7 @@ int id = Integer.parseInt(request.getParameter("id"));
 RequestDispatcher rd =null;
 if(pd.deleteProduction(id)){
 	System.out.println("Successfully Deleted.");
-	rd = request.getRequestDispatcher("index.html");
+	rd = request.getRequestDispatcher("dashboard.html");
 	rd.forward(request, response);
 }
 else {

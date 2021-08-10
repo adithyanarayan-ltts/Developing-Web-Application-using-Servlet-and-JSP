@@ -13,7 +13,7 @@
 	MovieDao md = new MovieDao();
 %>
 
-<a href="index.html">Home</a>
+<a href="dashboard.html">Home</a>
  <form name="f1" method="get" action="#">
        <select name="languages">
            <option>Hindi</option>
