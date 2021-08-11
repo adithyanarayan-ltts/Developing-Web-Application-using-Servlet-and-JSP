@@ -15,7 +15,7 @@ int id = Integer.parseInt(request.getParameter("id"));
 RequestDispatcher rd =null;
 if(pd.deleteProduction(id)){
 	System.out.println("Successfully Deleted.");
-	rd = request.getRequestDispatcher("dashboard.html");
+	rd = request.getRequestDispatcher("dashboard.jsp");
 	rd.forward(request, response);
 }
 else {

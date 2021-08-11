@@ -13,9 +13,17 @@
 	MovieDao md = new MovieDao();
 %>
 
-<a href="dashboard.html">Home</a>
- <form name="f1" method="get" action="#">
+<%
+    if ((session.getAttribute("email") == null) || (session.getAttribute("email") == "")) {
+%>
+You are not logged in<br/>
+<span>Please <a href="index.html"> Login</a></span>
+<%} else {
+%>
+<a href="dashboard.jsp">Home</a>
+<form name="f1" method="get" action="#">
        <select name="languages">
+           <option>All</option>
            <option>Hindi</option>
            <option>Tamil</option>   
            <option>Telugu</option>
@@ -26,12 +34,19 @@
     <%-- To display selected value from dropdown list. --%>
      <% 
                 String s=request.getParameter("languages");
+     			List<Movie> li = new ArrayList<Movie>();
                 if (s !=null)
                 {
                     out.println("Selected language is : "+s);
+                    if(s.equals("All")){
+                    	li = md.getAllMovies();
+                    }
+                    else{
+                    	li=md.getMoviesByLanguage(s);
+                    }
                 }
 
-            	List<Movie> li = md.getAllMovies();
+            	
       %>
 <table>
 <tr>
@@ -46,8 +61,9 @@
 <th>Production Id</th>
 </tr>
 
-<%for(Movie m:li){	
-if(m.getLanguage().equals(s)){
+<%
+
+for(Movie m:li){
 	
 %>
 <tr>
@@ -63,8 +79,12 @@ if(m.getLanguage().equals(s)){
 <td><a href="updateMovie.jsp?id=<%=m.getMovieId()%>">Edit Movie</a>
 <td><a href="deleteMovie.jsp?id=<%=m.getMovieId() %>">Delete Movie</a>
 </tr>
-<% }
+<%
 } %>
 </table>
+<%
+    }
+%>
+ 
 </body>
 </html>

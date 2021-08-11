@@ -10,6 +10,13 @@
 </head>
 <body>
 <%
+    if ((session.getAttribute("email") == null) || (session.getAttribute("email") == "")) {
+%>
+You are not logged in<br/>
+<span>Please <a href="index.html"> Login</a></span>
+<%} else {
+%>
+<%
 MovieDao md =new MovieDao();
 int id = Integer.parseInt(request.getParameter("id"));
 Movie m = md.getMovieFromId(id);
@@ -27,5 +34,6 @@ Movie Type: <input type="text" name="movietype" value="<%=m.getMovieType() %>"><
 Production Id: <input type="number" name="pid" value="<%=m.getProductionId() %>"><br><br>
 <input type="submit" value="Update Movie"><br><br>
 </form>
+<%} %>
 </body>
 </html>

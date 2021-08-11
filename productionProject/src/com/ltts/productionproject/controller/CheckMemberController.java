@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.ltts.productionproject.dao.MemberDao;
 import com.ltts.productionproject.model.Member;
@@ -44,6 +45,7 @@ public class CheckMemberController extends HttpServlet {
 		String email = request.getParameter("email");
 		String pass = request.getParameter("password");
 		MemberDao md = new MemberDao();
+		HttpSession sess = request.getSession();
 		Member b = new Member();
 		try {
 			b = md.checkMember(email, pass);
@@ -55,7 +57,9 @@ public class CheckMemberController extends HttpServlet {
 			RequestDispatcher rd =null;
 			if(b.getEmail().compareTo(email)==0 && b.getPassword().compareTo(pass)==0 ) {
 				System.out.println("Successful Login.");
-				rd = request.getRequestDispatcher("dashboard.html");
+				sess.setAttribute("email", email);
+				sess.setAttribute("name", b.getName());
+				rd = request.getRequestDispatcher("dashboard.jsp");
 				rd.forward(request, response);
 			}
 			else {

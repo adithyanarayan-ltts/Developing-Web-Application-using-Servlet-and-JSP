@@ -37,6 +37,17 @@ public class MovieDao {
 		c.close();
 		return p;
 	}
+	public List<Movie> getMoviesByLanguage(String s) throws Exception{
+		List<Movie> li = new ArrayList<Movie>();
+		Connection c = MyConfigure.getConnection();
+		PreparedStatement ps = c.prepareStatement("Select * from movie where language like '"+s+"'");
+		ResultSet rs = ps.executeQuery();
+		while(rs.next()) {
+			li.add(new Movie(rs.getInt("movieId"),rs.getString("movieName"),rs.getString("heroName"),rs.getString("heroine"),LocalDate.parse(rs.getString("releaseDate")),rs.getString("language"),rs.getInt("length"),rs.getString("movieType"),rs.getInt("productionId")));
+		}
+		c.close();
+		return li;
+	}
 	public List<Movie> getAllMovies() throws Exception{
 		List<Movie> li = new ArrayList<Movie>();
 		Connection c = MyConfigure.getConnection();

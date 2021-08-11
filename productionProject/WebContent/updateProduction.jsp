@@ -9,6 +9,13 @@
 </head>
 <body>
 <%
+    if ((session.getAttribute("email") == null) || (session.getAttribute("email") == "")) {
+%>
+You are not logged in<br/>
+<span>Please <a href="index.html"> Login</a></span>
+<%} else {
+%>
+<%
 ProductionDao pd =new ProductionDao();
 int id = Integer.parseInt(request.getParameter("id"));
 Production p = pd.getProductionFromId(id);
@@ -23,5 +30,6 @@ Owner Name: <input type="text" name="oname" value = "<%=p.getOwnerName()%>"><br>
 Date Started: <input type="date" name="datestarted" value = "<%=p.getDateStarted()%>"><br><br>
 <input type="submit" value="Update Production"><br><br>
 </form>
+<%} %>
 </body>
 </html>
