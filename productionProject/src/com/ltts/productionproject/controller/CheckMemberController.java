@@ -39,7 +39,7 @@ public class CheckMemberController extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, NullPointerException {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
 		String email = request.getParameter("email");
@@ -48,25 +48,36 @@ public class CheckMemberController extends HttpServlet {
 		HttpSession sess = request.getSession();
 		Member b = new Member();
 		try {
-			b = md.checkMember(email, pass);
+			b = md.checkMember(email);
 		}
 		catch(Exception e) {
 			System.out.println(e);
 		}
 		finally {
 			RequestDispatcher rd =null;
-			if(b.getEmail().compareTo(email)==0 && b.getPassword().compareTo(pass)==0 ) {
-				System.out.println("Successful Login.");
-				sess.setAttribute("email", email);
-				sess.setAttribute("name", b.getName());
-				rd = request.getRequestDispatcher("dashboard.jsp");
+			try {
+				if(b.getEmail().compareTo(email)==0 && b.getPassword().compareTo(pass)==0 ) {
+					System.out.println("Successful Login.");
+					sess.setAttribute("email", email);
+					sess.setAttribute("name", b.getName());
+					rd = request.getRequestDispatcher("dashboard.jsp");
+					rd.forward(request, response);
+				}
+				else {
+					System.out.println("Wrong password entered. Try again");
+					rd = request.getRequestDispatcher("passError.jsp");
+					rd.forward(request, response);
+				}
+				
+			}catch(Exception e) {
+				System.out.println(e);
+				System.out.println("Wrong email entered. Try again");
+				rd = request.getRequestDispatcher("emailError.jsp");
 				rd.forward(request, response);
+				
+				
 			}
-			else {
-				System.out.println("Error due to some exception.");
-				rd = request.getRequestDispatcher("error.html");
-				rd.forward(request, response);
-			}
+			
 		}
 			
 	}

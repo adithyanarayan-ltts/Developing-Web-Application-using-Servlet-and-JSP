@@ -3,6 +3,11 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Registration</title>
+<style>
+.reg{
+text-align:center;
+}
+</style>
 <script>
 function emailValidation() {
     inputText = document.getElementById('email');
@@ -25,6 +30,8 @@ function emailValidation() {
 </script>
 </head>
 <body>
+<div class = "reg">
+<h3>Sign Up</h3>
 	<form action="./InsertMemberController" method="post"> 
 		<label for="name">Name:</label>
         <input type="text" id="name" name="name"><br><br>
@@ -36,5 +43,7 @@ function emailValidation() {
         <input type="text" id="loc" name="loc"><br><br>
         <input type="submit" value="Sign Up">
     </form>
+</div>
+
 </body>
 </html>
