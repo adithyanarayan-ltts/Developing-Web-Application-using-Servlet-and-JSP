@@ -5,18 +5,26 @@ public class Member {
 	private String password;
 	private String email;
 	private String location;
+	private String code;
 	
+	public String getCode() {
+		return code;
+	}
+	public void setCode(String code) {
+		this.code = code;
+	}
 	
 	public Member() {
 		super();
 	}
 	
-	public Member(String name, String password, String email, String location) {
+	public Member(String name, String password, String email, String location, String code) {
 		super();
 		this.name = name;
 		this.password = password;
 		this.email = email;
 		this.location = location;
+		this.code = code;
 	}
 
 	public String getName() {

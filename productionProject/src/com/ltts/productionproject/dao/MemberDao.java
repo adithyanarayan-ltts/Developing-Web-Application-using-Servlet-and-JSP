@@ -25,13 +25,13 @@ public class MemberDao {
 			c.close();
 		}
 	}
-	public Member checkMember(String email) throws Exception{
+	public Member checkMember(String email, String code) throws Exception{
 		try {
 			Connection c = MyConfigure.getConnection();
 			PreparedStatement ps = c.prepareStatement("Select * from members where email like '"+email+"'");
 			ResultSet rs = ps.executeQuery();
 			rs.next();
-			Member m = new Member(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5));
+			Member m = new Member(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),code);
 			c.close();
 			return m;	
 		}

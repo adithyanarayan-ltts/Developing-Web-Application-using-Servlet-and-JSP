@@ -46,9 +46,10 @@ public class CheckMemberController extends HttpServlet {
 		String pass = request.getParameter("password");
 		MemberDao md = new MemberDao();
 		HttpSession sess = request.getSession();
+		String code = (String) sess.getAttribute("authcode");
 		Member b = new Member();
 		try {
-			b = md.checkMember(email);
+			b = md.checkMember(email, code);
 		}
 		catch(Exception e) {
 			System.out.println(e);
