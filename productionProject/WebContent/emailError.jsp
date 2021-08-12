@@ -4,11 +4,13 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Email error</title>
+<link rel="stylesheet" href="main.css">
+
 </head>
 <body>
-<a href="index.html">Login</a><br><br>
+Wrong email entered. Try again.<a href="index.html"><button class="button">Login</button></a><br><br>
 
-Wrong email entered. Try again.
+
 </body>
 </html>

@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="main.css">
 <meta charset="ISO-8859-1">
 <title>Production and Movie Houses</title>
 </head>
@@ -15,12 +16,15 @@ You are not logged in<br/>
 <%} else {
 %>
 <span><i><b>Hi <%=request.getSession().getAttribute("email")%></b></i></span>
-<span style="padding-left:550px"><a href="logout.jsp">Logout</a></span>
+<span style="padding-left:500px"><a href="logout.jsp"><button class="button">Logout</button></a></span>
+<div style="text-align:center">
+
 <h1> Welcome to the Movie Production Houses</h1>
-<a href="addProduction.jsp">Add Production</a><br><br>
-<a href="viewproductions.jsp">View Productions</a><br><br>
-<a href="addMovie.jsp">Add Movie</a><br><br>
-<a href="viewMovies.jsp">View Movies</a>
+<a href="addProduction.jsp"><button class="button">Add Production</button></a><br><br>
+<a href="viewproductions.jsp"><button class="button">View Productions</button></a><br><br>
+<a href="addMovie.jsp"><button class="button">Add Movie</button></a><br><br>
+<a href="viewMovies.jsp"><button class="button">View Movies</button></a>
+</div>
 <%
     }
 %>

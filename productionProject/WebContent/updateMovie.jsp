@@ -7,13 +7,14 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Update Movie</title>
+<link rel="stylesheet" href="main.css">
 </head>
 <body>
 <%
     if ((session.getAttribute("email") == null) || (session.getAttribute("email") == "")) {
 %>
-You are not logged in<br/>
-<span>Please <a href="index.html"> Login</a></span>
+You are not logged in. <span>Please <a href="index.html"><button class="button">Login</button></a><br><br></span>
+
 <%} else {
 %>
 <%
@@ -21,6 +22,10 @@ MovieDao md =new MovieDao();
 int id = Integer.parseInt(request.getParameter("id"));
 Movie m = md.getMovieFromId(id);
 %>
+<%@ include file="header.jsp" %>
+
+<div style="text-align:center">
+
 <h2> Update Movie</h2><br>
 <form action="./UpdateMovieController" method="post">
 Movie Id: <input type="number" name="mid" value="<%=m.getMovieId()%>" readonly><br><br>
@@ -32,8 +37,8 @@ Language: <input type="text" name="language" value="<%=m.getLanguage() %>"><br><
 Length: <input type="number" name="length" value="<%=m.getLength() %>"><br><br>
 Movie Type: <input type="text" name="movietype" value="<%=m.getMovieType() %>"><br><br>
 Production Id: <input type="number" name="pid" value="<%=m.getProductionId() %>"><br><br>
-<input type="submit" value="Update Movie"><br><br>
-</form>
+<button class="button" type="submit">Update Movie</button><br><br></form>
+</div>
 <%} %>
 </body>
 </html>

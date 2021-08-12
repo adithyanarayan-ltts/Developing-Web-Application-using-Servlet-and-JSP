@@ -4,10 +4,11 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Password Error</title>
+<link rel="stylesheet" href="main.css">
 </head>
 <body>
-<a href="index.html">Login</a><br><br>
-Entered password is incorrect.
+Entered password is incorrect. <a href="index.html"><button class="button">Login</button></a><br><br>
+
 </body>
 </html>

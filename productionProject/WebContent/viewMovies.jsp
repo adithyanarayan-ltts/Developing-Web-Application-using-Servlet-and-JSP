@@ -6,6 +6,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>List of all Movies</title>
+<link rel="stylesheet" href="main.css">
 </head>
 <body>
 
@@ -16,11 +17,11 @@
 <%
     if ((session.getAttribute("email") == null) || (session.getAttribute("email") == "")) {
 %>
-You are not logged in<br/>
-<span>Please <a href="index.html"> Login</a></span>
+You are not logged in. <span>Please <a href="index.html"><button class="button">Login</button></a><br><br></span>
+
 <%} else {
 %>
-<a href="dashboard.jsp">Home</a>
+<jsp:include page="header.jsp"></jsp:include>
 <form name="f1" method="get" action="#">
        <select name="languages">
            <option>All</option>
@@ -76,8 +77,8 @@ for(Movie m:li){
 <td><%= m.getLength() %></td>
 <td><%= m.getMovieType() %></td>
 <td><%= m.getProductionId() %></td>
-<td><a href="updateMovie.jsp?id=<%=m.getMovieId()%>">Edit Movie</a>
-<td><a href="deleteMovie.jsp?id=<%=m.getMovieId() %>">Delete Movie</a>
+<td><a href="updateMovie.jsp?id=<%=m.getMovieId()%>"><button class="button">Edit Movie</button></a>
+<td><a href="deleteMovie.jsp?id=<%=m.getMovieId() %>"><button class="button">Delete Movie</button></a>
 </tr>
 <%
 } %>

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="main.css">
 <meta charset="ISO-8859-1">
 <title>Registration</title>
 <style>
@@ -34,15 +35,16 @@ function emailValidation() {
 <h3>Sign Up</h3>
 	<form action="./InsertMemberController" method="post"> 
 		<label for="name">Name:</label>
-        <input type="text" id="name" name="name"><br><br>
+        <input type="text" id="name" name="name" required><br><br>
         <label for="pass">Password:</label>
-        <input type="password" id="pass" name="pass"></input><br><br>
+        <input type="password" id="pass" name="pass" required></input><br><br>
         <label for="email">Email:</label>
-        <input type="text" onfocus="this.value=''" onblur="emailValidation()" id="email" name="email"><br><span id="eV" style="font-size: small;"></span><br><br>
+        <input type="text" onfocus="this.value=''" onblur="emailValidation()" id="email" name="email" required><br><span id="eV" style="font-size: small;"></span><br><br>
         <label for="loc">Location:</label>
-        <input type="text" id="loc" name="loc"><br><br>
-        <input type="submit" value="Sign Up">
+        <input type="text" id="loc" name="loc" required><br><br>
+        <button type="submit" class="button">Sign Up </button>   <br><br>
     </form>
+    Already have an account? <span><a href="index.html"><button class= "button">Login</button></a></span>
 </div>
 
 </body>

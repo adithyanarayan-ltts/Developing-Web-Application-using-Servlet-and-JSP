@@ -65,7 +65,7 @@ public class InsertMovieController extends HttpServlet {
 			RequestDispatcher rd =null;
 			if(b==true) {
 				System.out.println("Successfully Inserted.");
-				rd = request.getRequestDispatcher("success.html");
+				rd = request.getRequestDispatcher("dashboard.jsp");
 				rd.forward(request, response);
 			}
 			else {
