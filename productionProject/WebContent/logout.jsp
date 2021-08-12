@@ -9,6 +9,8 @@
 <body>
 <%
 session.setAttribute("email", null);
+session.setAttribute("name",null);
+session=request.getSession(false);  
 session.invalidate();
 response.sendRedirect("index.html");
 %>
